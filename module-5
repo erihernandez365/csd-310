@@ -1,1 +1,23 @@
+Erik Hernandez
+11/09/2023
+MySQL Functions
+Function 1: LENGTH()
+Explanation: The LENGTH() function is used to determine the length of a string. It can be used to count how many letters are in a piece of text. 
+Alias for Column Header: 'Text Length'
+SQL Statement:
 
+mysql> SELECT LENGHT('Hello World!.') AS 'Text Lenght';
+
+Function 2: UPPER()
+Explanation: The UPPER() function is used to convert text to uppercase. It is used to make the text all uppercase or lowercase. 
+Alias for Column Header: 'Uppercase Text'
+SQL Statement:
+
+mysql> SELECT UPPER('example text') AS 'Uppercase Text';
+
+Function 3: ROUND()
+Explanation: The ROUND() function is used to round a numeric value to a specified number of decimal places. It is used to show numbers with a specific level of accuracy.
+Alias for Column Header: 'Rounded Value'
+SQL Statement:
+
+mysql> SELECT ROUND(123.456789, 2) AS 'Rounded Value';
