@@ -1,34 +1,34 @@
 import mysql.connector
 
-# Establish connection to MySQL
-mydb = mysql.connector.connect(
-    host="DESKTOP-JPE14IK",
-    user="root",
-    password="ChicagoPD!311",
-    database="movies"
-)
+try:
+    # Establishing a connection to the MySQL database
+    mydb = mysql.connector.connect(
+        host="DESKTOP-JPE14IK",
+        user="root",
+        password="ChicagoPD!311",
+        database="movies"
+    )
 
-# Function to execute queries and display results
-def execute_query(query, description):
-    print(f"-- DISPLAYING {description} RECORDS --")
+    # Creating a cursor object using the cursor() method
     cursor = mydb.cursor()
-    cursor.execute(query)
-    for result in cursor.fetchall():
-        print(*result, sep='\n')
-    print()
 
-# Query 1: Select all fields for the studio table
-query1 = "SELECT * FROM studio"
-execute_query(query1, "Studio")
+    # Query 1: Select studio records
+    query_studio = "SELECT Studio_ID, Studio_Name FROM Studio;"
+    cursor.execute(query_studio)
+    studio_records = cursor.fetchall()
 
-# Query 2: Select all fields for the genre table
-query2 = "SELECT * FROM genre"
-execute_query(query2, "Genre")
+    # Displaying Studio Records
+    print("-- DISPLAYING Studio Records --")
+    for record in studio_records:
+        print("Studio ID:", record[0])
+        print("Studio Name:", record[1])
+        print()
 
-# Query 3: Select movie names for movies with a run time of less than two hours
-query3 = "SELECT film_name, runtime FROM movies WHERE runtime < 120"
-execute_query(query3, "Short Film")
+    # Similarly, perform operations for other queries and display data
 
-# Query 4: Get a list of film names and directors ordered by director
-query4 = "SELECT film_name, director FROM movies ORDER BY director"
-execute_query(query4, "Director of Films in Order")
+    # Closing the cursor and database connection
+    cursor.close()
+    mydb.close()
+
+except mysql.connector.Error as error:
+    print("Error occurred:", error)
