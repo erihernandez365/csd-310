@@ -11,32 +11,8 @@ try:
     # Creating a cursor object using the cursor() method
     cursor = mydb.cursor()
 
-    # Query 1: Select studio records
-    query_studio = "SELECT Studio_ID, Studio_Name FROM Studio;"
-    cursor.execute(query_studio)
-    studio_records = cursor.fetchall()
-
-    # Displaying Studio Records
-    print("-- DISPLAYING Studio Records --")
-    for record in studio_records:
-        print("Studio ID:", record[0])
-        print("Studio Name:", record[1])
-        print()
-
-    # Query 2: Select genre records
-    query_genre = "SELECT Genre_ID, Genre_Name FROM Genre;"
-    cursor.execute(query_genre)
-    genre_records = cursor.fetchall()
-
-    # Displaying Genre Records
-    print("-- DISPLAYING Genre RECORDS --")
-    for record in genre_records:
-        print("Genre ID:", record[0])
-        print("Genre Name:", record[1])
-        print()
-
-    # Query 3: Select short films with runtime less than two hours
-    query_short_films = "SELECT Film_Name, Runtime FROM Films WHERE Runtime < 120;"
+    # Query 3: Selecting short films with their runtime
+    query_short_films = "SELECT film_name, film_runtime FROM film WHERE film_runtime < 120;"
     cursor.execute(query_short_films)
     short_film_records = cursor.fetchall()
 
@@ -47,12 +23,12 @@ try:
         print("Runtime:", record[1])
         print()
 
-    # Query 4: Select film names and directors ordered by director
-    query_director = "SELECT Film_Name, Director FROM Films ORDER BY Director;"
-    cursor.execute(query_director)
+    # Query 4: Selecting film names and directors ordered by director
+    query_directors = "SELECT film_name, film_director FROM film ORDER BY film_director;"
+    cursor.execute(query_directors)
     director_records = cursor.fetchall()
 
-    # Displaying Director of Records in Order
+    # Displaying Director Records
     print("-- DISPLAYING Director of RECORDS in Order --")
     for record in director_records:
         print("Film Name:", record[0])
